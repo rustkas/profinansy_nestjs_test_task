@@ -40,7 +40,7 @@ export class UsersController {
     return this.usersService.findOne(email);
   }
 
-  @Put(':id')
+  @Put(':email')
   @UseGuards(AuthGuard('jwt'))
   async update(@Param('email') email: string, @Body() updateUserDto: UpdateUserDto) {
     //TODO:
@@ -57,7 +57,7 @@ export class UsersController {
     return { accessToken: token, updatedUser };
   }
 
-  @Delete(':id')
+  @Delete(':email')
   @UseGuards(AuthGuard('jwt'))
   async remove(@Param('email') email: string) {
     return this.usersService.remove(email);
